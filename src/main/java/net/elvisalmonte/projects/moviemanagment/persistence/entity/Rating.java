@@ -12,6 +12,13 @@ public class Rating {
     private Long movieId;
     @Column(nullable = false)
     private Long userId;
+    @ManyToOne
+    @JoinColumn(name = "movie_id")
+    private Movie movie;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     @Check(constraints = "rating >= 0 and rating <= 5")
     @Column(nullable = false)
     private int rating;
@@ -46,5 +53,21 @@ public class Rating {
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
