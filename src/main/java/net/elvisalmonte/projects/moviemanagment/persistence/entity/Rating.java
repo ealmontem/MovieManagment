@@ -8,15 +8,15 @@ public class Rating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
+    @Column(name = "movie_id", nullable = false)
     private Long movieId;
-    @Column(nullable = false)
+    @Column(name = "user_id", nullable = false)
     private Long userId;
     @ManyToOne
-    @JoinColumn(name = "movie_id")
+    @JoinColumn(name = "movie_id", insertable = false, updatable = false)
     private Movie movie;
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private User user;
 
     @Check(constraints = "rating >= 0 and rating <= 5")
