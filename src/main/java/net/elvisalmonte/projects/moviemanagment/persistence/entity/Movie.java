@@ -1,6 +1,7 @@
 package net.elvisalmonte.projects.moviemanagment.persistence.entity;
 
 import jakarta.persistence.*;
+import net.elvisalmonte.projects.moviemanagment.util.MovieGenre;
 
 @Entity
 public class Movie {
@@ -11,7 +12,8 @@ public class Movie {
     private String title;
     @Column(nullable = false)
     private String director;
-    private String genre;
+    @Enumerated(EnumType.STRING)
+    private MovieGenre genre;
 
     private int releaseYear;
 
@@ -39,11 +41,11 @@ public class Movie {
         this.director = director;
     }
 
-    public String getGenre() {
+    public MovieGenre getGenre() {
         return genre;
     }
 
-    public void setGenre(String genre) {
+    public void setGenre(MovieGenre genre) {
         this.genre = genre;
     }
 
